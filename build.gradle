@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // 테스트에 꼭 필요한 'JUnit 5' (3주차랑 같음)
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    // 테스트에 꼭 필요한 'AssertJ' (3주차랑 같음)
+    testImplementation 'org.assertj:assertj-core:3.25.3'
+}
+
+test {
+    useJUnitPlatform()
+}
