@@ -19,4 +19,11 @@ public class NoteConverter {
             currentLetter++;
         }
     }
+
+    public String convertRightHand(char letter) {
+        if (letter == 'z') {
+            return "REST";
+        }
+        return noteMap.getOrDefault(letter, "REST");
+    }
 }
