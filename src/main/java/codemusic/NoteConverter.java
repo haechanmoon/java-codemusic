@@ -26,4 +26,25 @@ public class NoteConverter {
         }
         return noteMap.getOrDefault(letter, "REST");
     }
+
+    public String convertLeftHand(char letter) {
+        if (letter == 'z' || letter == 'q') {
+            return "REST";
+        }
+
+        String rightNote = noteMap.getOrDefault(letter, "REST");
+
+        char noteName = rightNote.charAt(0);
+        char accidental = ' ';
+        int octave;
+
+        if (rightNote.length() == 3) {
+            accidental = rightNote.charAt(1);
+            octave = Integer.parseInt(rightNote.substring(2));
+            return "" + noteName + accidental + (octave - 2);
+        } else {
+            octave = Integer.parseInt(rightNote.substring(1));
+            return "" + noteName + (octave - 2);
+        }
+    }
 }
