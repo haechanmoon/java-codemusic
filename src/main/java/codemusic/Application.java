@@ -1,7 +1,16 @@
 package codemusic;
 
+import java.util.Scanner;
+
 public class Application {
     public static void main(String[] args) {
-        System.out.print("Hello and welcome!");
+        Scanner scanner = new Scanner(System.in);
+        InputView inputView = new InputView(scanner);
+        OutputView outputView = new OutputView();
+        NoteConverter noteConverter = new NoteConverter();
+
+        CodeMusicGame game = new CodeMusicGame(inputView, outputView, noteConverter);
+
+        game.start();
     }
 }
