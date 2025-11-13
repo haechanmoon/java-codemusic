@@ -1,7 +1,7 @@
 package codemusic;
 
 public class OutputView {
-    public void printNods(String rightNote, String leftNote) {
+    public void printNotes(String rightNote, String leftNote) {
         System.out.printf(" 오른손 :[%s] | 왼손 : [%s]%n", rightNote, leftNote);
     }
 
