@@ -10,12 +10,30 @@ public class InputView {
     }
 
     public String getRightHandCode() {
-        System.out.println("오른손 코드를 입력하세요: ");
-        return scanner.nextLine();
+        while (true) {
+            try {
+                System.out.println("\n오른손 코드를 입력하세요: ");
+                String rightcode = scanner.nextLine();
+                Validator.validateCodeNotEmpty(rightcode);
+
+                return rightcode;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
     public String getLeftHandCode() {
-        System.out.println("왼손 코드를 입력하세요: ");
-        return scanner.nextLine();
+        while (true) {
+            try {
+                System.out.println("\n왼손 코드를 입력하세요: ");
+                String leftcode = scanner.nextLine();
+                Validator.validateCodeNotEmpty(leftcode);
+
+                return leftcode;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 }
