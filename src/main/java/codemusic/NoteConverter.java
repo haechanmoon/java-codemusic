@@ -28,7 +28,7 @@ public class NoteConverter {
     }
 
     public String convertLeftHand(char letter) {
-        if (letter == 'z' || letter == 'q') {
+        if (letter == 'z' || letter == 'y') {
             return "REST";
         }
 
