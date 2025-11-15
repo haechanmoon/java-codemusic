@@ -28,18 +28,11 @@ public class CodeMusicGame {
 
             String rightNote = noteConverter.convertRightHand(rightChar);
             String leftNote = noteConverter.convertLeftHand(leftChar);
-    
+
             rightNotes.add(rightNote);
             leftNotes.add(leftNote);
-
-            /*
-            outputView.printNoteList("오른손", rightNotes);
-            outputView.printNoteList("왼손", leftNotes);
-            */
         }
-        System.out.println("--- 바구니 확인 ---");
-        System.out.println("오른손 바구니: " + rightNotes);
-        System.out.println("왼손 바구니: " + leftNotes);
-        System.out.println("-----------------");
+        outputView.printNoteList("오른손", rightNotes);
+        outputView.printNoteList("왼손", leftNotes);
     }
 }

@@ -11,9 +11,8 @@ public class OutputView {
     */
 
     public void printNoteList(String handName, List<String> notes) {
-        // String.join(", ", notes) : 바구니 안의 음표들을 ", "로 엮어줘!
-        String noteString = String.join(", ", notes);
-        System.out.println(handName + ": " + noteString);
+        String noteString = String.join("\t| ", notes);
+        System.out.println(handName + ":\t" + noteString);
     }
 
     public void printStartMessage() {
