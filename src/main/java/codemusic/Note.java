@@ -61,4 +61,14 @@ public enum Note {
             return "" + noteName + (octave - 2);
         }
     }
+
+    public static Note findByChar(char letter) {
+        for (Note note : values()) {
+            char enumChar = note.name().charAt(0);
+            if (Character.toLowerCase(enumChar) == letter) {
+                return note;
+            }
+        }
+        return Z;
+    }
 }

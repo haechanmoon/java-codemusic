@@ -6,12 +6,10 @@ import java.util.List;
 public class CodeMusicGame {
     private final InputView inputView;
     private final OutputView outputView;
-    private final NoteConverter noteConverter;
 
-    public CodeMusicGame(InputView inputView, OutputView outputView, NoteConverter noteConverter) {
+    public CodeMusicGame(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
-        this.noteConverter = noteConverter;
     }
 
     public void start() {
@@ -26,8 +24,11 @@ public class CodeMusicGame {
             char rightChar = rightCode.charAt(i);
             char leftChar = leftCode.charAt(i % leftCode.length());
 
-            String rightNote = noteConverter.convertRightHand(rightChar);
-            String leftNote = noteConverter.convertLeftHand(leftChar);
+            Note rightNoteEnum = Note.findByChar(rightChar);
+            Note leftNoteEnum = Note.findByChar(leftChar);
+
+            String rightNote = rightNoteEnum.getRightHandNote();
+            String leftNote = leftNoteEnum.getLeftHandNote();
 
             rightNotes.add(rightNote);
             leftNotes.add(leftNote);
