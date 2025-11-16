@@ -53,7 +53,6 @@ public class CodeMusicGame {
             }
             leftHandIndex++;
         }
-        outputView.printNoteList("오른손", rightNotes);
-        outputView.printNoteList("왼손", leftNotes);
+        outputView.printScore(rightNotes, leftNotes);
     }
 }
