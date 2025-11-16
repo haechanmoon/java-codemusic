@@ -41,6 +41,16 @@ public class CodeMusicGame {
                     break;
                 }
             }
+
+            if (matchedKeyword != null) {
+                rightNotes.add(chordMap.get(matchedKeyword));
+                rightCode = rightCode.substring(matchedKeyword.length());
+            } else {
+                char rightOneLetter = rightCode.charAt(0);
+                Note rightNoteEnum = Note.findByChar(rightOneLetter);
+                rightNotes.add(rightNoteEnum.getRightHandNote());
+                rightCode = rightCode.substring(1);
+            }
             leftHandIndex++;
         }
         outputView.printNoteList("오른손", rightNotes);
