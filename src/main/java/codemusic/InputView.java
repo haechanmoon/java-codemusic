@@ -10,30 +10,28 @@ public class InputView {
     }
 
     public String getRightHandCode() {
+        System.out.println("\n오른손 코드를 입력하세요 ('done'을 입력하면 종료): ");
+        StringBuilder rightCodeBoard = new StringBuilder();
         while (true) {
-            try {
-                System.out.println("\n오른손 코드를 입력하세요: ");
-                String rightcode = scanner.nextLine();
-                Validator.validateCodeNotEmpty(rightcode);
-
-                return rightcode;
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
+            String oneLine = scanner.nextLine();
+            if (oneLine.equalsIgnoreCase("play")) {
+                break;
             }
+            rightCodeBoard.append(oneLine).append("\n");
         }
+        return rightCodeBoard.toString();
     }
 
     public String getLeftHandCode() {
+        System.out.println("\n왼손 코드를 입력하세요('done'을 입력하면 종료): ");
+        StringBuilder leftCodeBoard = new StringBuilder();
         while (true) {
-            try {
-                System.out.println("\n왼손 코드를 입력하세요: ");
-                String leftcode = scanner.nextLine();
-                Validator.validateCodeNotEmpty(leftcode);
-
-                return leftcode;
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
+            String oneLine = scanner.nextLine();
+            if (oneLine.equalsIgnoreCase("play")) {
+                break;
             }
+            leftCodeBoard.append(oneLine).append("\n");
         }
+        return leftCodeBoard.toString();
     }
 }
