@@ -16,7 +16,6 @@ public enum Chord {
     NEW("new", ""),
     THIS("this", ""),
     SUPER("super", ""),
-    PUBLIC("public", ""),
     PRIVATE("private", ""),
     PROTECTED("protected", ""),
     STATIC("static", ""),
