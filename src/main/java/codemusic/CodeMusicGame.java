@@ -1,9 +1,7 @@
 package codemusic;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class CodeMusicGame {
     private final InputView inputView;
@@ -19,11 +17,6 @@ public class CodeMusicGame {
         String leftCode = inputView.getLeftHandCode();
         outputView.printStartMessage();
 
-        Map<String, String> chordMap = new HashMap<>();
-        chordMap.put("public", "C4-E4-G4");
-        chordMap.put("static", "G4-B4-D5");
-        chordMap.put("void", "F4-A4-C5");
-
         List<String> rightNotes = new ArrayList<>();
         List<String> leftNotes = new ArrayList<>();
 
@@ -34,17 +27,11 @@ public class CodeMusicGame {
             Note leftNoteEnum = Note.findByChar(leftOneLetter);
             leftNotes.add(leftNoteEnum.getLeftHandNote());
 
-            String matchedKeyword = null;
-            for (String keyword : chordMap.keySet()) {
-                if (rightCode.startsWith(keyword)) {
-                    matchedKeyword = keyword;
-                    break;
-                }
-            }
+            Chord matchedChord = Chord.findByKeyword(rightCode);
 
-            if (matchedKeyword != null) {
-                rightNotes.add(chordMap.get(matchedKeyword));
-                rightCode = rightCode.substring(matchedKeyword.length());
+            if (matchedChord != null) {
+                rightNotes.add(matchedChord.getChordNotes());
+                rightCode = rightCode.substring(matchedChord.getKeyword().length());
             } else {
                 char rightOneLetter = rightCode.charAt(0);
                 Note rightNoteEnum = Note.findByChar(rightOneLetter);
