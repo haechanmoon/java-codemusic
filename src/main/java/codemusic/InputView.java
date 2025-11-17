@@ -14,7 +14,7 @@ public class InputView {
         StringBuilder rightCodeBoard = new StringBuilder();
         while (true) {
             String oneLine = scanner.nextLine();
-            if (oneLine.equalsIgnoreCase("play")) {
+            if (oneLine.equalsIgnoreCase("done")) {
                 break;
             }
             rightCodeBoard.append(oneLine).append("\n");
@@ -27,7 +27,7 @@ public class InputView {
         StringBuilder leftCodeBoard = new StringBuilder();
         while (true) {
             String oneLine = scanner.nextLine();
-            if (oneLine.equalsIgnoreCase("play")) {
+            if (oneLine.equalsIgnoreCase("done")) {
                 break;
             }
             leftCodeBoard.append(oneLine).append("\n");
