@@ -30,7 +30,9 @@ public class CodeMusicGame {
             Chord matchedChord = Chord.findByKeyword(rightCode);
 
             if (matchedChord != null) {
-                rightNotes.add(matchedChord.getChordNotes());
+                int[] midiMaterials = matchedChord.generateMidiNotes();
+                String rightHandChord = Chord.midiArrayToNoteString(midiMaterials);
+                rightNotes.add(rightHandChord);
                 rightCode = rightCode.substring(matchedChord.getKeyword().length());
             } else {
                 char rightOneLetter = rightCode.charAt(0);
