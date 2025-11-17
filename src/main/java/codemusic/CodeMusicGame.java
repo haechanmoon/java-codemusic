@@ -25,7 +25,7 @@ public class CodeMusicGame {
         while (!rightCode.isEmpty()) {
             char leftOneLetter = leftCode.charAt(leftHandIndex % leftCode.length());
             Note leftNoteEnum = Note.findByChar(leftOneLetter);
-            leftNotes.add(leftNoteEnum.getLeftHandNote());
+            String leftNote = leftNoteEnum.getLeftHandNote();
 
             Chord matchedChord = Chord.findByKeyword(rightCode);
 
