@@ -64,12 +64,18 @@ public enum Note {
     }
 
     public static Note findByChar(char letter) {
+        char upperCaseLetter = Character.toUpperCase(letter);
+
+        if (upperCaseLetter == 'Z') {
+            return Z;
+        }
+
         for (Note note : values()) {
-            char enumChar = note.name().charAt(0);
-            if (Character.toLowerCase(enumChar) == letter) {
+            if (note.name().charAt(0) == upperCaseLetter) {
                 return note;
             }
         }
+        
         return Z;
     }
 }
