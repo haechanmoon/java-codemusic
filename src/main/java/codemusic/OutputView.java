@@ -37,7 +37,7 @@ public class OutputView {
 
                 rightLine = new StringBuilder("오른손:\t");
                 leftLine = new StringBuilder("왼손:\t");
-                dynamicLine = new StringBuilder("tpa여림:\t");
+                dynamicLine = new StringBuilder("셈여림:\t");
 
             }
         }
