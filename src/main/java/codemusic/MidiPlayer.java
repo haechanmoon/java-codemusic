@@ -43,7 +43,7 @@ public class MidiPlayer {
                 if (leftNote != -1) {
                     channel.noteOn(leftNote, velocity);
                 }
-                Thread.sleep(70);
+                Thread.sleep(250);
 
                 for (int note : rightNotes) {
                     if (note != -1) {
