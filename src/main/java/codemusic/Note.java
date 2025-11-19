@@ -63,6 +63,13 @@ public enum Note {
         return note + octave;
     }
 
+    public int getLeftHandMidiNumber() {
+        if (this == Z || this == Y || this.midiNumber == -1) {
+            return -1;
+        }
+        return this.midiNumber - 24;
+    }
+
     public static Note findByChar(char letter) {
         char upperCaseLetter = Character.toUpperCase(letter);
 
@@ -75,7 +82,6 @@ public enum Note {
                 return note;
             }
         }
-        
         return Z;
     }
 }
