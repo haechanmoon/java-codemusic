@@ -10,7 +10,7 @@ public class InputView {
     }
 
     public String getRightHandCode() {
-        System.out.println("\n오른손 코드를 입력하세요 ('done'을 입력하면 종료): ");
+        System.out.println("\n오른손 코드를 입력하세요 (빈 줄에 'done'만 입력하면 종료):");
         StringBuilder rightCodeBoard = new StringBuilder();
         while (true) {
             String oneLine = scanner.nextLine();
@@ -23,7 +23,7 @@ public class InputView {
     }
 
     public String getLeftHandCode() {
-        System.out.println("\n왼손 코드를 입력하세요('done'을 입력하면 종료): ");
+        System.out.println("\n왼손 코드를 입력하세요(빈 줄에 'done'만 입력하면 종료):");
         StringBuilder leftCodeBoard = new StringBuilder();
         while (true) {
             String oneLine = scanner.nextLine();
