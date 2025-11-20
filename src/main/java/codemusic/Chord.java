@@ -2,6 +2,7 @@ package codemusic;
 
 public enum Chord {
     PUBLIC("public"),
+    INTERFACE("interface"),
     INT("int"),
     CHAR("char"),
     BOOLEAN("boolean"),
@@ -10,7 +11,6 @@ public enum Chord {
     WHILE("while"),
     RETURN("return"),
     CLASS("class"),
-    INTERFACE("interface"),
     ABSTRACT("abstract"),
     IMPLEMENTS("implements"),
     NEW("new"),
