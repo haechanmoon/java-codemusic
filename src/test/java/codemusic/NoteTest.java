@@ -34,4 +34,13 @@ class NoteTest {
         assertThat(Note.findByChar('!').getRightHandNote()).isEqualTo("REST");
         assertThat(Note.findByChar(' ').getRightHandNote()).isEqualTo("REST");
     }
+
+    @DisplayName("왼손 베이스 음은 오른손보다 2옥타브 낮아야 한다.")
+    @Test
+    void getLeftHandNote_Test() {
+        Note note = Note.findByChar('a');
+
+        assertThat(note.getLeftHandNote()).isEqualTo("C2");
+        assertThat(note.getLeftHandMidiNumber()).isEqualTo(36);
+    }
 }
