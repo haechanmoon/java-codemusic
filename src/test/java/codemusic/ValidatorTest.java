@@ -1,5 +1,6 @@
 package codemusic;
 
+import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
@@ -15,10 +16,10 @@ class ValidatorTest {
                 .hasMessageContaining("[ERROR]");
     }
 
-    @DisplayName("정상적인 무자가 들어오면 통과한다.")
+    @DisplayName("정상적인 문자가 들어오면 통과한다.")
     @Test
-    void 정상적인_문자가_들어오면_예외_던짐() {
-        assertThatThrownBy(() -> Validator.validateCodeNotEmpty("abc"))
+    void 정상적인_문자가_들어오면_통과() {
+        assertThatCode(() -> Validator.validateCodeNotEmpty("abc"))
                 .doesNotThrowAnyException();
     }
 }
