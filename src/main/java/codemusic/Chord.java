@@ -1,7 +1,5 @@
 package codemusic;
 
-import java.util.Random;
-
 public enum Chord {
     PUBLIC("public"),
     INT("int"),
@@ -33,7 +31,6 @@ public enum Chord {
     FALSE("false");
 
     private final String keyword;
-    private static final Random random = new Random();
     private static final int MIN_ROOT_NOTE = 60;
     private static final int MAX_ROOT_NOTE = 77;
     private static final String[] NOTE_NAMES = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
@@ -46,12 +43,23 @@ public enum Chord {
         return this.keyword;
     }
 
-    public int[] generateMidiNotes() {
-        int rootNote = MIN_ROOT_NOTE + random.nextInt(MAX_ROOT_NOTE - MIN_ROOT_NOTE + 1);
-        int interval1 = random.nextBoolean() ? 3 : 4;
-        int interval2 = 7 - interval1;
+    public int[] generateMidiNotes(int rootNote, boolean isMajor) {
+        if (isMajor) {
+            return generateMajorChord(rootNote);
+        }
+        return generateMinorChord(rootNote);
+    }
 
-        return new int[]{rootNote, rootNote + interval1, rootNote + interval2};
+    private int[] generateMajorChord(int rootNote) {
+        int interval1 = 4;
+        int interval2 = 3;
+        return new int[]{rootNote, rootNote + interval1, rootNote + interval1 + interval2};
+    }
+
+    private int[] generateMinorChord(int rootNote) {
+        int interval1 = 3;
+        int interval2 = 4;
+        return new int[]{rootNote, rootNote + interval1, rootNote + interval1 + interval2};
     }
 
     public static String midiArrayToNoteString(int[] midiNumbers) {
