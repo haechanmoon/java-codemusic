@@ -21,5 +21,17 @@ class NoteTest {
         assertThat(note.getMidiNumber()).isEqualTo(60);
     }
 
+    @DisplayName("문자 'z'는 쉼표(REST)로 변환되어야 한다.")
+    @Test
+    void Z는_쉼표로_처리() {
+        Note note = Note.findByChar('z');
+        assertThat(note.getRightHandNote()).isEqualTo("REST");
+    }
 
+    @DisplayName("특수문자나 공백도 쉼표(REST)로 처리된다.")
+    @Test
+    void 특수문자나_공백도_쉼표로_처리() {
+        assertThat(Note.findByChar('!').getRightHandNote()).isEqualTo("REST");
+        assertThat(Note.findByChar(' ').getRightHandNote()).isEqualTo("REST");
+    }
 }
