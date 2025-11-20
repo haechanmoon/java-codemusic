@@ -2,6 +2,7 @@ package codemusic;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class CodeMusicGame {
     private final InputView inputView;
@@ -45,17 +46,22 @@ public class CodeMusicGame {
             String dynamic = Character.isUpperCase(leftOneLetter) ? "f" : "p"; // (f: forte, p: piano)
 
             Chord matchedChord = Chord.findByKeyword(rightCode);
-            String rightNote;
+            String rightNote = "";
             List<Integer> currentRightMidiNums = new ArrayList<>();
 
             if (matchedChord != null) {
-                int[] midiMaterials = matchedChord.generateMidiNotes();
+                boolean randomIsMajor = new Random().nextBoolean();
+                int range = Chord.MAX_ROOT_NOTE - Chord.MIN_ROOT_NOTE + 1;
+                int randomRoot = Chord.MIN_ROOT_NOTE + new java.util.Random().nextInt(range);
+                int[] midiMaterials = matchedChord.generateMidiNotes(randomRoot, randomIsMajor);
+
                 rightNote = Chord.midiArrayToNoteString(midiMaterials);
                 for (int note : midiMaterials) {
                     currentRightMidiNums.add(note);
                 }
                 rightCode = rightCode.substring(matchedChord.getKeyword().length());
-            } else {
+            }
+            if (matchedChord == null) {
                 char rightOneLetter = rightCode.charAt(0);
                 Note rightNoteEnum = Note.findByChar(rightOneLetter);
                 rightNote = rightNoteEnum.getRightHandNote();
