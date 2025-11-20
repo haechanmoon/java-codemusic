@@ -41,4 +41,19 @@ class CodeMusicGameTest {
         // 2. 단음이 아니라 화음 형태(하이픈 포함)여야 함
         assertThat(score.rightNotes.get(0)).contains("-");
     }
+
+    @DisplayName("왼손 대소문자에 따라 다이나믹(p, f)이 결정된다.")
+    @Test
+    void dynamic_Test() {
+        // given
+        CodeMusicGame game = new CodeMusicGame(null, null);
+        String rightCode = "ab";
+        String leftCode = "aA"; // 소문자(p), 대문자(f)
+
+        // when
+        CodeMusicGame.MusicScore score = game.createMusicScore(rightCode, leftCode);
+
+        // then
+        assertThat(score.dynamics).containsExactly("p", "f");
+    }
 }
