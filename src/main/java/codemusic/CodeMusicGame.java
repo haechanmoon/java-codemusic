@@ -43,7 +43,7 @@ public class CodeMusicGame {
         }
     }
 
-    private MusicScore createMusicScore(String rightCode, String leftCode) {
+    MusicScore createMusicScore(String rightCode, String leftCode) {
         MusicScore score = new MusicScore();
         int leftIndex = 0;
 
@@ -119,7 +119,7 @@ public class CodeMusicGame {
         return list;
     }
 
-    private static class MusicScore {
+    static class MusicScore {
         List<String> rightNotes = new ArrayList<>();
         List<String> leftNotes = new ArrayList<>();
         List<String> dynamics = new ArrayList<>();
