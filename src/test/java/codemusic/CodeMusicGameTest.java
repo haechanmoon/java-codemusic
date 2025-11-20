@@ -22,4 +22,23 @@ class CodeMusicGameTest {
         assertThat(score.leftNotes).hasSize(5);
         assertThat(score.leftNotes).containsExactly("F2", "F#2", "F2", "F#2", "F2");
     }
+
+    @DisplayName("키워드(public)가 입력되면 화음 1개로 변환되고 인덱스는 스킵된다.")
+    @Test
+    void keyword_Skip_Test() {
+        // given
+        CodeMusicGame game = new CodeMusicGame(null, null);
+        String rightCode = "public"; // 6글자지만 화음 1개
+        String leftCode = "a";
+
+        // when
+        CodeMusicGame.MusicScore score = game.createMusicScore(rightCode, leftCode);
+
+        // then
+        // 1. 생성된 음표는 딱 1개여야 함 (6개가 아님!)
+        assertThat(score.rightNotes).hasSize(1);
+
+        // 2. 단음이 아니라 화음 형태(하이픈 포함)여야 함
+        assertThat(score.rightNotes.get(0)).contains("-");
+    }
 }
