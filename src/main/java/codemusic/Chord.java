@@ -31,8 +31,8 @@ public enum Chord {
     FALSE("false");
 
     private final String keyword;
-    private static final int MIN_ROOT_NOTE = 60;
-    private static final int MAX_ROOT_NOTE = 77;
+    public static final int MIN_ROOT_NOTE = 60;
+    public static final int MAX_ROOT_NOTE = 77;
     private static final String[] NOTE_NAMES = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
 
     Chord(String keyword) {
