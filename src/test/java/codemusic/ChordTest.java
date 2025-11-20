@@ -30,4 +30,34 @@ class ChordTest {
     void findByKeyword_Null_Test() {
         assertThat(Chord.findByKeyword("hello")).isNull();
     }
+
+    @DisplayName("입력받은 루트음과 장조(true) 여부에 따라 정확한 화음을 생성한다.")
+    @Test
+    void generateMajorChord_Test() {
+        // given
+        Chord chord = Chord.PUBLIC;
+        int rootNote = 60;
+        boolean isMajor = true;
+
+        // when
+        int[] result = chord.generateMidiNotes(rootNote, isMajor);
+
+        // then
+        assertThat(result).containsExactly(60, 64, 67);
+    }
+
+    @DisplayName("단조(false)를 주입하면 단조 화음을 생성한다.")
+    @Test
+    void generateMinorChord_Test() {
+        // given
+        Chord chord = Chord.PUBLIC;
+        int rootNote = 60;
+        boolean isMajor = false;
+
+        // when
+        int[] result = chord.generateMidiNotes(rootNote, isMajor);
+
+        // then
+        assertThat(result).containsExactly(60, 63, 67);
+    }
 }
