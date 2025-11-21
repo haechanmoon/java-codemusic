@@ -46,7 +46,8 @@ public class OutputView {
         return String.format("%-" + MAX_NOTE_WIDTH + "s", text);
     }
 
-    public void printStartMessage() {
-        System.out.println("--- 코드를 음악으로 변환합니다. ---");
+    private void resetBuffer(StringBuilder sb, String prefix) {
+        sb.setLength(0);
+        sb.append(prefix);
     }
 }
