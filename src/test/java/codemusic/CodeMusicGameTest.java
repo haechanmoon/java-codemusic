@@ -56,4 +56,34 @@ class CodeMusicGameTest {
         // then
         assertThat(score.dynamics).containsExactly("p", "f");
     }
+
+    @DisplayName("오른손과 왼손이 모두 쉼표(REST)일 경우 악보에 추가되지 않는다.")
+    @Test
+    void 오른손_왼손_모두_쉼표이면_악보_추가_안함() {
+        //given
+        CodeMusicGame game = new CodeMusicGame(null, null);
+        String rightCode = "z";
+        String leftCode = "z";
+
+        //when
+        CodeMusicGame.MusicScore score = game.createMusicScore(rightCode, leftCode);
+
+        //then
+        assertThat(score.rightNotes).isEmpty();
+    }
+
+    @DisplayName("둘 중에 하나만 쉼표일 경우 악보에 기록")
+    @Test
+    void 하나만_쉼표일때_악보_출력() {
+        //given
+        CodeMusicGame game = new CodeMusicGame(null, null);
+        String rightCode = "a";
+        String leftCode = "y";
+
+        //when
+        CodeMusicGame.MusicScore score = game.createMusicScore(rightCode, leftCode);
+
+        //then
+        assertThat(score.rightNotes).hasSize(1);
+    }
 }
