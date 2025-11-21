@@ -19,4 +19,5 @@ public class Messages {
     public static final String ERROR_EMPTY_CODE = ERROR_PREFIX + "코드는 1글자 이상 입력해야 합니다.";
     public static final String ERROR_TEMPO_RANGE = ERROR_PREFIX + "속도는 1에서 9 사이의 숫자여야 합니다.";
     public static final String ERROR_NOT_NUMBER = ERROR_PREFIX + "숫자만 입력 가능합니다.";
+    public static final String ERROR_MIDI_UNAVAILABLE = ERROR_PREFIX + "MIDI 시스템을 사용할 수 없습니다.";
 }
