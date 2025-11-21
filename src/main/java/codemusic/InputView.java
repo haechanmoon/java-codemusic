@@ -10,11 +10,11 @@ public class InputView {
     }
 
     public String getRightHandCode() {
-        System.out.println("\n오른손 코드를 입력하세요 (빈 줄에 'done'만 입력하면 종료):");
+        System.out.println(Messages.ASK_RIGHT_HAND);
         StringBuilder rightCodeBoard = new StringBuilder();
         while (true) {
             String oneLine = scanner.nextLine();
-            if (oneLine.equalsIgnoreCase("done")) {
+            if (oneLine.equalsIgnoreCase(Messages.END_WORD)) {
                 break;
             }
             rightCodeBoard.append(oneLine).append("\n");
@@ -23,11 +23,11 @@ public class InputView {
     }
 
     public String getLeftHandCode() {
-        System.out.println("\n왼손 코드를 입력하세요(빈 줄에 'done'만 입력하면 종료):");
+        System.out.println(Messages.ASK_LEFT_HAND);
         StringBuilder leftCodeBoard = new StringBuilder();
         while (true) {
             String oneLine = scanner.nextLine();
-            if (oneLine.equalsIgnoreCase("done")) {
+            if (oneLine.equalsIgnoreCase(Messages.END_WORD)) {
                 break;
             }
             leftCodeBoard.append(oneLine).append("\n");
