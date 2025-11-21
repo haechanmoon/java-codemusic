@@ -5,6 +5,10 @@ import java.util.List;
 import java.util.Random;
 
 public class CodeMusicGame {
+    private static final String REST = "REST";
+    private static final String DYNAMIC_FORTE = "f";
+    private static final String DYNAMIC_PIANO = "p";
+
     private final InputView inputView;
     private final OutputView outputView;
     private final MidiPlayer midiPlayer;
@@ -88,8 +92,8 @@ public class CodeMusicGame {
     private void addScoreIfValid(MusicScore score, String rightName, int[] rightMidis, char leftChar) {
         Note leftNote = Note.findByChar(leftChar);
 
-        if (rightName.equals("REST")) {
-            if (leftNote.getLeftHandNote().equals("REST")) {
+        if (rightName.equals(REST)) {
+            if (leftNote.getLeftHandNote().equals(REST)) {
                 return;
             }
         }
@@ -106,9 +110,9 @@ public class CodeMusicGame {
 
     private String calculateDynamic(char leftChar) {
         if (Character.isUpperCase(leftChar)) {
-            return "f";
+            return DYNAMIC_FORTE;
         }
-        return "p";
+        return DYNAMIC_PIANO;
     }
 
     private List<Integer> toList(int[] arr) {
