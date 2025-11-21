@@ -24,27 +24,13 @@ public class CodeMusicGame {
     public void start() {
         String rightCode = inputView.getRightHandCode();
         String leftCode = inputView.getLeftHandCode();
+        int tempo = inputView.getTempo();
 
-        if (!validateInputs(rightCode, leftCode)) {
-            start();
-            return;
-        }
         outputView.printStartMessage();
 
         MusicScore score = createMusicScore(rightCode, leftCode);
         outputView.printScore(score.rightNotes, score.leftNotes, score.dynamics);
-        midiPlayer.play(score.rightMidis, score.leftMidis, score.dynamics);
-    }
-
-    private boolean validateInputs(String right, String left) {
-        try {
-            Validator.validateCodeNotEmpty(right);
-            Validator.validateCodeNotEmpty(left);
-            return true;
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            return false;
-        }
+        midiPlayer.play(score.rightMidis, score.leftMidis, score.dynamics, tempo);
     }
 
     MusicScore createMusicScore(String rightCode, String leftCode) {
