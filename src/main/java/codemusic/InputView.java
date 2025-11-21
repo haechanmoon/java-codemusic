@@ -34,4 +34,16 @@ public class InputView {
         }
         return leftCodeBoard.toString();
     }
+
+    public int getTempo() {
+        while (true) {
+            try {
+                System.out.println(Messages.ASK_TEMPO);
+                String input = scanner.nextLine();
+                return Validator.validateTempo(input);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
 }
