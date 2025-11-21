@@ -22,4 +22,15 @@ class ValidatorTest {
         assertThatCode(() -> Validator.validateCodeNotEmpty("abc"))
                 .doesNotThrowAnyException();
     }
+
+    @Test
+    @DisplayName("템포가 1~9 범위를 벗어나면 예외가 발생한다.")
+    void 템포범위_1부터_9까지_벗어나면_예외_발생() {
+        assertThatThrownBy(() -> Validator.validateTempo("10"))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Validator.validateTempo("0"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+
 }
