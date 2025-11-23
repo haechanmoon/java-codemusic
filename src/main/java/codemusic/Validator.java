@@ -1,6 +1,9 @@
 package codemusic;
 
 public class Validator {
+    private static final int MAX_TEMPO = 9;
+    private static final int MIN_TEMPO = 1;
+
     public static void validateCodeNotEmpty(String code) {
         if (code.isEmpty()) {
             throw new IllegalArgumentException(Messages.ERROR_EMPTY_CODE);
@@ -10,7 +13,7 @@ public class Validator {
     public static int validateTempo(String input) {
         try {
             int tempo = Integer.parseInt(input);
-            if (tempo < 1 || tempo > 9) {
+            if (tempo < MIN_TEMPO || tempo > MAX_TEMPO) {
                 throw new IllegalArgumentException(Messages.ERROR_TEMPO_RANGE);
             }
             return tempo;
