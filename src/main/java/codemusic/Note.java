@@ -25,15 +25,27 @@ public enum Note {
     V("A5", 81),
     W("A#5", 82),
     X("B5", 83),
-    Y("C6", 84),
-    Z("REST", -1);
+    Y("C6", 84, true),
+    Z("REST", -1, true);
 
+    private static final char REST_CHAR = 'Z';
+    private static final String PRINT_REST = "REST";
+    private static final int REST_MIDI_VALUE = -1;
+    private static final int LEFT_HAND_OCTAVE_SHIFT = 24; // 2옥타브 (12 * 2)
+    private static final int SEMITONES_PER_OCTAVE = 12;
+    private static final String[] NOTE_NAMES = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
     private final String rightHandNote;
     private final int midiNumber;
+    private final boolean isLeftHandRest;
 
     Note(String rightHandNote, int midiNumber) {
+        this(rightHandNote, midiNumber, false);
+    }
+
+    Note(String rightHandNote, int midiNumber, boolean isLeftHandRest) {
         this.rightHandNote = rightHandNote;
         this.midiNumber = midiNumber;
+        this.isLeftHandRest = isLeftHandRest;
     }
 
     public String getRightHandNote() {
@@ -45,35 +57,30 @@ public enum Note {
     }
 
     public String getLeftHandNote() {
-        if (this == Z || this == Y) {
-            return "REST";
+        if (this.isLeftHandRest || this.midiNumber == REST_MIDI_VALUE) {
+            return PRINT_REST;
         }
-
-        if (this.midiNumber == -1) {
-            return "Rest";
-        }
-        int leftMidi = this.midiNumber - 24;
+        int leftMidi = this.midiNumber - LEFT_HAND_OCTAVE_SHIFT;
         return midiToNoteString(leftMidi);
     }
 
-    private String midiToNoteString(int midiNumber) {
-        String[] noteNames = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
-        int octave = (midiNumber / 12) - 1;
-        String note = noteNames[midiNumber % 12];
-        return note + octave;
+    public int getLeftHandMidiNumber() {
+        if (this.isLeftHandRest || this.midiNumber == REST_MIDI_VALUE) {
+            return REST_MIDI_VALUE;
+        }
+        return this.midiNumber - LEFT_HAND_OCTAVE_SHIFT;
     }
 
-    public int getLeftHandMidiNumber() {
-        if (this == Z || this == Y || this.midiNumber == -1) {
-            return -1;
-        }
-        return this.midiNumber - 24;
+    private String midiToNoteString(int midiNumber) {
+        int octave = (midiNumber / SEMITONES_PER_OCTAVE) - 1;
+        String note = NOTE_NAMES[midiNumber % SEMITONES_PER_OCTAVE];
+        return note + octave;
     }
 
     public static Note findByChar(char letter) {
         char upperCaseLetter = Character.toUpperCase(letter);
 
-        if (upperCaseLetter == 'Z') {
+        if (upperCaseLetter == REST_CHAR) {
             return Z;
         }
 
