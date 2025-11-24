@@ -52,7 +52,7 @@ public enum Note {
         return this.rightHandNote;
     }
 
-    public int getMidiNumber() { // ⬅️ 'MIDI 숫자 창구' '추가'!
+    public int getMidiNumber() {
         return this.midiNumber;
     }
 
